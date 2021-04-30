@@ -12,13 +12,24 @@ logger = logging.getLogger('tcpserver')
 class service_tcpserver(TCPServer):
     def __init__(self, *args, **kwargs):
         super(service_tcpserver, self).__init__(*args, **kwargs)
-        self.devices = list()
+        self.devices = dict()
+        self.io_loop = ioloop.IOLoop.current()
+        self.io_loop.add_callback(self.report_devices)
+
+    @gen.coroutine
+    def report_devices(self):
+        while True:
+            logger.debug(self.devices)
+            yield gen.sleep(5)
 
     @gen.coroutine
     def handle_stream(self, stream, address):
-        self.devices.append(address)
+        # Add connect to the dict
+        self.devices[address[0]+":"+str(address[1])]
         logger.debug("[%s:%s]device connected, devices count: %s"
                      % (address[0], address[1], len(self.devices)))
+
+        # Listen to the message
         while True:
             try:
                 data = yield stream.read_until(b"\n")
@@ -33,9 +44,11 @@ class service_tcpserver(TCPServer):
     def get_devices(self):
         return self.devices
 
+    @gen.coroutine
     def start_listen(self, port=8000):
         self.listen(port)
         ioloop.IOLoop.current().start()
+        # self.io_loop.start()
 
 
 class thread_tcpserver(threading.Thread):
@@ -50,6 +63,8 @@ class thread_tcpserver(threading.Thread):
 
     def run(self):
         try:
+            io_loop = ioloop.IOLoop
+            io_loop.make_current(self)
             self.server.start_listen(8000)
             while self.running:
                 time.sleep(0.001)
@@ -74,7 +89,7 @@ if __name__ == '__main__':
     # time.sleep(5)
     # obj_thread_tcpserver.stop()
     ss = service_tcpserver()
-    ss.start_listen(8000)
-    ss1 = service_tcpserver()
-    ss1.start_listen(8001)
-    ioloop.IOLoop.current().start()
+    ss.start_listen(10000)
+    logger.debug("end")
+
+

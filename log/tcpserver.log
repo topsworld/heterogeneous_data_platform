@@ -2,3 +2,5 @@
 2021-04-30 00:11:15,790 - tcpserver - ERROR: ("There is no current event loop in thread 'Thread-1'.",)
 2021-04-30 00:18:51,601 - tcpserver - ERROR: ("There is no current event loop in thread 'Thread-1'.",)
 2021-04-30 00:21:32,403 - tcpserver - ERROR: ("There is no current event loop in thread 'Thread-1'.",)
+2021-04-30 09:45:16,341 - tcpserver - ERROR: ("make_current() missing 1 required positional argument: 'self'",)
+2021-04-30 09:45:51,417 - tcpserver - ERROR: ()
