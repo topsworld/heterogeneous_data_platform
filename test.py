@@ -28,7 +28,7 @@ def block(num):
  
 if __name__ == '__main__':
     app = make_app()
-    app.listen(8888)
+    app.listen(8000)
     print("开启监听")
     io = tornado.ioloop.IOLoop.current()
     io.run_in_executor(None, block, "run_in_executor")

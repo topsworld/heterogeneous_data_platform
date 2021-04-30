@@ -1,228 +1,103 @@
-2021-04-30 00:06:55,479 - tcpserver - ERROR: ("There is no current event loop in thread 'Thread-1'.",)
-2021-04-30 00:11:15,790 - tcpserver - ERROR: ("There is no current event loop in thread 'Thread-1'.",)
-2021-04-30 00:18:51,601 - tcpserver - ERROR: ("There is no current event loop in thread 'Thread-1'.",)
-2021-04-30 00:21:32,403 - tcpserver - ERROR: ("There is no current event loop in thread 'Thread-1'.",)
-2021-04-30 09:45:16,341 - tcpserver - ERROR: ("make_current() missing 1 required positional argument: 'self'",)
-2021-04-30 09:45:51,417 - tcpserver - ERROR: ()
-2021-04-30 14:53:49,232 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 14:53:49,233 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 14:53:49,234 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 14:53:52,358 - tcpserver - INFO: [127.0.0.1:50166]device connected, devices count: 1
-2021-04-30 14:55:28,155 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 14:55:28,156 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 14:55:28,157 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 14:55:35,165 - tcpserver - INFO: [127.0.0.1:50240]device connected, devices count: 1
-2021-04-30 14:58:15,500 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 14:58:15,502 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 14:58:15,503 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 14:58:21,511 - tcpserver - INFO: [127.0.0.1:50374]device connected, devices count: 1
-2021-04-30 14:59:35,500 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 14:59:35,501 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 14:59:35,502 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 14:59:37,533 - tcpserver - INFO: [127.0.0.1:50468]device connected, devices count: 1
-2021-04-30 15:00:27,523 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:00:27,524 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:00:27,525 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:00:30,094 - tcpserver - INFO: [127.0.0.1:50520]device connected, devices count: 1
-2021-04-30 15:00:55,158 - tcpserver - INFO: [127.0.0.1:50544]device connected, devices count: 2
-2021-04-30 15:01:02,570 - tcpserver - INFO: [127.0.0.1:50550]device connected, devices count: 3
-2021-04-30 15:15:11,028 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:15:11,029 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:15:11,030 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:15:13,989 - tcpserver - INFO: [127.0.0.1:51238] device connected, devices count: 1
-2021-04-30 15:15:26,980 - tcpserver - INFO: [127.0.0.1:51252] device connected, devices count: 2
-2021-04-30 15:16:31,878 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:16:31,880 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:16:31,881 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:16:35,891 - tcpserver - INFO: [127.0.0.1:51304] device connected, devices count: 1
-2021-04-30 15:19:03,871 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:19:03,872 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:19:03,873 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:19:06,608 - tcpserver - INFO: [127.0.0.1:51422] device connected, devices count: 1
-2021-04-30 15:19:22,660 - tcpserver - INFO: [127.0.0.1:51438] device connected, devices count: 2
-2021-04-30 15:20:03,018 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:20:03,019 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:20:03,020 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:20:07,378 - tcpserver - INFO: [127.0.0.1:51474] device connected, devices count: 1
-2021-04-30 15:22:07,322 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:22:07,323 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:22:07,324 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:22:09,598 - tcpserver - INFO: [127.0.0.1:51570] device connected, devices count: 1
-2021-04-30 15:22:43,231 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:22:43,232 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:22:43,233 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:22:45,940 - tcpserver - INFO: [127.0.0.1:51598] device connected, devices count: 1
-2021-04-30 15:24:01,673 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:24:01,674 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:24:01,675 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:24:07,131 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:24:07,132 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:24:07,133 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:24:10,135 - tcpserver - INFO: [127.0.0.1:51666] device connected, devices count: 1
-2021-04-30 15:29:17,309 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:29:17,311 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:29:17,313 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:29:21,148 - tcpserver - INFO: [127.0.0.1:51856] device connected, devices count: 1
-2021-04-30 15:29:53,704 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:29:53,705 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:29:53,706 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:30:11,971 - tcpserver - INFO: [127.0.0.1:51908] device connected, devices count: 1
-2021-04-30 15:30:21,486 - tcpserver - INFO: [127.0.0.1:51922] device connected, devices count: 2
-2021-04-30 15:34:23,506 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:34:23,507 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:34:23,509 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:34:27,530 - tcpserver - INFO: [127.0.0.1:52122] device connected, devices count: 1
-2021-04-30 15:36:51,142 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:36:51,144 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:36:51,145 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:36:54,193 - tcpserver - INFO: [127.0.0.1:52232] device connected, devices count: 1
-2021-04-30 15:38:24,899 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:38:24,900 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:38:24,902 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:38:27,906 - tcpserver - INFO: [127.0.0.1:52314] device connected, devices count: 1
-2021-04-30 15:39:16,710 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:39:16,711 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:39:16,712 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:39:20,200 - tcpserver - INFO: [127.0.0.1:52362] device connected, devices count: 1
-2021-04-30 15:42:01,929 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:42:01,930 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:42:01,931 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:42:04,259 - tcpserver - INFO: [127.0.0.1:52468] device connected, devices count: 1
-2021-04-30 15:42:40,323 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:42:40,323 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:42:40,325 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:42:41,960 - tcpserver - INFO: [127.0.0.1:52510] device connected, devices count: 1
-2021-04-30 15:43:20,035 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:43:20,036 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:43:20,038 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:43:23,388 - tcpserver - INFO: [127.0.0.1:52542] device connected, devices count: 1
-2021-04-30 15:44:18,125 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:44:18,126 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:44:18,127 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:44:20,130 - tcpserver - INFO: [127.0.0.1:52608] device connected, devices count: 1
-2021-04-30 15:44:35,148 - tcpserver - INFO: [127.0.0.1:52628] device connected, devices count: 2
-2021-04-30 15:45:41,847 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:45:41,849 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:45:41,849 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:45:45,264 - tcpserver - INFO: [127.0.0.1:52672] device connected, devices count: 1
-2021-04-30 15:45:55,863 - tcpserver - INFO: [127.0.0.1:52684] device connected, devices count: 2
-2021-04-30 15:46:14,605 - tcpserver - INFO: [127.0.0.1:52698] device connected, devices count: 3
-2021-04-30 15:46:50,284 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:46:50,285 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:46:50,286 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:46:52,156 - tcpserver - INFO: [127.0.0.1:52722] device connected, devices count: 1
-2021-04-30 15:47:00,299 - tcpserver - INFO: [127.0.0.1:52728] device connected, devices count: 2
-2021-04-30 15:47:25,613 - tcpserver - INFO: [127.0.0.1:52748] device connected, devices count: 3
-2021-04-30 15:47:52,760 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:47:52,761 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:47:52,762 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:47:55,726 - tcpserver - INFO: [127.0.0.1:52770] device connected, devices count: 1
-2021-04-30 15:48:08,128 - tcpserver - INFO: [127.0.0.1:52784] device connected, devices count: 2
-2021-04-30 15:48:20,535 - tcpserver - INFO: [127.0.0.1:52794] device connected, devices count: 3
-2021-04-30 15:49:30,239 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:49:30,241 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:49:30,241 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:49:33,597 - tcpserver - INFO: [127.0.0.1:52854] device connected, devices count: 1
-2021-04-30 15:49:56,504 - tcpserver - INFO: [127.0.0.1:52862] device connected, devices count: 2
-2021-04-30 15:49:56,504 - tcpserver - INFO: [127.0.0.1:52876] device connected, devices count: 3
-2021-04-30 15:50:03,234 - tcpserver - INFO: [127.0.0.1:52880] device connected, devices count: 4
-2021-04-30 15:51:28,863 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:51:28,864 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:51:28,865 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:51:38,591 - tcpserver - INFO: [127.0.0.1:52944] device connected, devices count: 1
-2021-04-30 15:52:00,519 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:52:00,520 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:52:00,521 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:52:04,244 - tcpserver - INFO: [127.0.0.1:52968] device connected, devices count: 1
-2021-04-30 15:52:20,543 - tcpserver - INFO: [127.0.0.1:52984] device connected, devices count: 2
-2021-04-30 15:54:47,657 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:54:47,659 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:54:47,659 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:54:49,663 - tcpserver - INFO: [127.0.0.1:53092] device connected, devices count: 1
-2021-04-30 15:56:56,672 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:56:56,673 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:56:56,674 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:56:58,999 - tcpserver - INFO: [127.0.0.1:53174] device connected, devices count: 1
-2021-04-30 15:57:04,689 - tcpserver - INFO: [127.0.0.1:53174] device disconnected, devices count: 1
-2021-04-30 15:58:12,943 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:58:12,944 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:58:12,945 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:58:16,150 - tcpserver - INFO: [127.0.0.1:53242] device connected, devices count: 1
-2021-04-30 15:58:34,008 - tcpserver - INFO: [127.0.0.1:53262] device connected, devices count: 2
-2021-04-30 15:59:07,889 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 15:59:07,890 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 15:59:07,891 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 15:59:13,157 - tcpserver - INFO: [127.0.0.1:53290] device connected, devices count: 1
-2021-04-30 16:01:45,887 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 16:01:45,888 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 16:01:45,890 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 16:01:47,761 - tcpserver - INFO: [127.0.0.1:53420] device connected, devices count: 1
-2021-04-30 16:02:21,789 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 16:02:21,790 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 16:02:21,791 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 16:02:23,800 - tcpserver - INFO: [127.0.0.1:53460] device connected, devices count: 1
-2021-04-30 16:03:29,941 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 16:03:29,942 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 16:03:29,944 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 16:03:31,724 - tcpserver - INFO: [127.0.0.1:53506] device connected, devices count: 1
-2021-04-30 16:04:15,448 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 16:04:15,449 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 16:04:15,450 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 16:04:19,233 - tcpserver - INFO: [127.0.0.1:53550] device connected, devices count: 1
-2021-04-30 16:05:33,076 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 16:05:33,077 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 16:05:33,078 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 16:05:35,930 - tcpserver - INFO: [127.0.0.1:53612] device connected, devices count: 1
-2021-04-30 16:05:53,321 - tcpserver - INFO: [127.0.0.1:53630] device connected, devices count: 2
-2021-04-30 16:06:41,423 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 16:06:41,424 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 16:06:41,426 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 16:06:45,393 - tcpserver - INFO: [127.0.0.1:53668] device connected, devices count: 1
-2021-04-30 16:07:08,036 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 16:07:08,037 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 16:07:08,038 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 16:07:11,020 - tcpserver - INFO: [127.0.0.1:53692] device connected, devices count: 1
-2021-04-30 16:09:14,721 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 16:09:14,723 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 16:09:14,724 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 16:09:19,203 - tcpserver - INFO: [127.0.0.1:53836] device connected, devices count: 1
-2021-04-30 16:09:24,209 - tcpserver - INFO: [127.0.0.1:53836] device disconnected, devices count: 0
-2021-04-30 16:09:27,531 - tcpserver - INFO: [127.0.0.1:53844] device connected, devices count: 1
-2021-04-30 16:09:41,434 - tcpserver - INFO: [127.0.0.1:53844] device disconnected, devices count: 0
-2021-04-30 16:14:04,144 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 16:14:04,145 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 16:14:04,145 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 16:14:06,230 - tcpserver - INFO: [127.0.0.1:54064] device connected, devices count: 1
-2021-04-30 16:14:11,238 - tcpserver - INFO: [127.0.0.1:54064] device disconnected ( ('Timeout',) ), devices count: 0
-2021-04-30 16:14:19,718 - tcpserver - INFO: [127.0.0.1:54084] device connected, devices count: 1
-2021-04-30 16:14:24,724 - tcpserver - INFO: [127.0.0.1:54084] device disconnected ( ('Timeout',) ), devices count: 0
-2021-04-30 16:14:31,326 - tcpserver - INFO: [127.0.0.1:54090] device connected, devices count: 1
-2021-04-30 16:14:38,937 - tcpserver - INFO: [127.0.0.1:54090] device disconnected ( ('Timeout',) ), devices count: 0
-2021-04-30 16:17:59,398 - tcpserver - INFO: Start tcpserver, port:8000
-2021-04-30 16:17:59,399 - tcpserver - INFO: Start tcpserver, port:8001
-2021-04-30 16:17:59,400 - tcpserver - INFO: Start tcpserver, port:8002
-2021-04-30 16:18:02,389 - tcpserver - INFO: [127.0.0.1:54254] device connected, devices count: 1
-2021-04-30 16:18:07,397 - tcpserver - INFO: [127.0.0.1:54254] device disconnected ( Timeout ), devices count: 0
-2021-04-30 16:27:49,209 - tcpserver - INFO: Terminate tcpserver, name: no set, port:8002
-2021-04-30 16:28:11,728 - tcpserver - INFO: Terminate tcpserver, name: no set, port:8002
-2021-04-30 16:29:22,724 - tcpserver - INFO: Start tcpserver,name: no set, port: 8000
-2021-04-30 16:29:22,725 - tcpserver - INFO: Start tcpserver,name: no set, port: 8001
-2021-04-30 16:29:22,727 - tcpserver - INFO: Start tcpserver,name: no set, port: 8002
-2021-04-30 16:29:27,728 - tcpserver - INFO: Terminate tcpserver, name: no set, port:8002
-2021-04-30 16:30:10,306 - tcpserver - INFO: Start tcpserver, [name:no set], [port: 8000]
-2021-04-30 16:30:10,308 - tcpserver - INFO: Start tcpserver, [name:no set], [port: 8001]
-2021-04-30 16:30:10,309 - tcpserver - INFO: Start tcpserver, [name:no set], [port: 8002]
-2021-04-30 16:30:15,313 - tcpserver - INFO: Terminate tcpserver, [name:no set], [port:8002]
-2021-04-30 16:30:48,630 - tcpserver - INFO: Start tcpserver, [name]:no set, [port]: 8000
-2021-04-30 16:30:48,631 - tcpserver - INFO: Start tcpserver, [name]:no set, [port]: 8001
-2021-04-30 16:30:48,632 - tcpserver - INFO: Start tcpserver, [name]:no set, [port]: 8002
-2021-04-30 16:30:53,634 - tcpserver - INFO: Terminate tcpserver, [name]:no set, [port]:8002
-2021-04-30 16:42:35,420 - tcpserver - INFO: Start tcpserver, [name]:no set, [port]: 8000
-2021-04-30 16:42:35,421 - tcpserver - INFO: Start tcpserver, [name]:no set, [port]: 8001
-2021-04-30 16:42:35,422 - tcpserver - INFO: Start tcpserver, [name]:no set, [port]: 8002
-2021-04-30 16:42:39,361 - tcpserver - INFO: [127.0.0.1:55444] device connected, devices count: 1
-2021-04-30 16:42:40,425 - tcpserver - INFO: Terminate tcpserver, [name]:no set, [port]:8002
-2021-04-30 16:42:53,470 - tcpserver - INFO: [127.0.0.1:51628] device connected, devices count: 1
-2021-04-30 16:42:59,998 - tcpserver - INFO: [127.0.0.1:51628] device disconnected ( Timeout ), devices count: 0
-2021-04-30 16:43:05,294 - tcpserver - INFO: [127.0.0.1:51636] device connected, devices count: 1
-2021-04-30 16:43:09,892 - tcpserver - INFO: [127.0.0.1:51636] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:01,585 - tcpserver - INFO: Start tcpserver, [name]:P1, [port]: 8000
+2021-04-30 18:14:01,587 - tcpserver - INFO: Start tcpserver, [name]:P2, [port]: 8001
+2021-04-30 18:14:01,588 - tcpserver - INFO: Start tcpserver, [name]:P3, [port]: 8002
+2021-04-30 18:14:34,954 - tcpserver - INFO: [P1][127.0.0.1:40188]device connected, devices count: 1
+2021-04-30 18:14:34,955 - tcpserver - INFO: [P1][127.0.0.1:40188] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:34,955 - tcpserver - INFO: [P1][127.0.0.1:40198]device connected, devices count: 1
+2021-04-30 18:14:34,956 - tcpserver - INFO: [P1][127.0.0.1:40198] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:34,956 - tcpserver - INFO: [P1][127.0.0.1:40208]device connected, devices count: 1
+2021-04-30 18:14:35,429 - tcpserver - INFO: [P1][127.0.0.1:40208] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:47,080 - tcpserver - INFO: [P2][127.0.0.1:55990]device connected, devices count: 1
+2021-04-30 18:14:47,081 - tcpserver - INFO: [P2][127.0.0.1:55990] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:47,082 - tcpserver - INFO: [P2][127.0.0.1:55992]device connected, devices count: 1
+2021-04-30 18:14:47,428 - tcpserver - INFO: [P2][127.0.0.1:55992] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:47,792 - tcpserver - INFO: [P2][127.0.0.1:55994]device connected, devices count: 1
+2021-04-30 18:14:48,845 - tcpserver - INFO: [P2][127.0.0.1:55994] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:49,391 - tcpserver - INFO: [P2][127.0.0.1:55998]device connected, devices count: 1
+2021-04-30 18:14:49,761 - tcpserver - INFO: [P2][127.0.0.1:55998] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:50,980 - tcpserver - INFO: [P2][127.0.0.1:56000]device connected, devices count: 1
+2021-04-30 18:14:51,405 - tcpserver - INFO: [P2][127.0.0.1:56000] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:58,456 - tcpserver - INFO: [P3][127.0.0.1:59846]device connected, devices count: 1
+2021-04-30 18:14:58,457 - tcpserver - INFO: [P3][127.0.0.1:59846] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:58,457 - tcpserver - INFO: [P3][127.0.0.1:59848]device connected, devices count: 1
+2021-04-30 18:14:58,457 - tcpserver - INFO: [P3][127.0.0.1:59848] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:58,457 - tcpserver - INFO: [P3][127.0.0.1:59850]device connected, devices count: 1
+2021-04-30 18:14:59,013 - tcpserver - INFO: [P3][127.0.0.1:59850] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:14:59,434 - tcpserver - INFO: [P3][127.0.0.1:59854]device connected, devices count: 1
+2021-04-30 18:14:59,940 - tcpserver - INFO: [P3][127.0.0.1:59854] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:15:00,376 - tcpserver - INFO: [P3][127.0.0.1:59856]device connected, devices count: 1
+2021-04-30 18:15:00,696 - tcpserver - INFO: [P3][127.0.0.1:59856] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:15:01,015 - tcpserver - INFO: [P3][127.0.0.1:59858]device connected, devices count: 1
+2021-04-30 18:15:01,385 - tcpserver - INFO: [P3][127.0.0.1:59858] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:15:17,608 - tcpserver - INFO: [P3][127.0.0.1:59874]device connected, devices count: 1
+2021-04-30 18:15:18,847 - tcpserver - INFO: [P3][127.0.0.1:59874] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:15:26,722 - tcpserver - INFO: [P2][127.0.0.1:56044]device connected, devices count: 1
+2021-04-30 18:15:26,723 - tcpserver - INFO: [P2][127.0.0.1:56044] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:15:30,749 - tcpserver - INFO: [P1][127.0.0.1:40280]device connected, devices count: 1
+2021-04-30 18:15:30,750 - tcpserver - INFO: [P1][127.0.0.1:40280] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:15:30,750 - tcpserver - INFO: [P1][127.0.0.1:40286]device connected, devices count: 1
+2021-04-30 18:15:31,001 - tcpserver - INFO: [P1][127.0.0.1:40286] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:15:31,415 - tcpserver - INFO: [P1][127.0.0.1:40288]device connected, devices count: 1
+2021-04-30 18:15:32,480 - tcpserver - INFO: [P1][127.0.0.1:40288] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:15:54,121 - tcpserver - INFO: [P1][127.0.0.1:40304]device connected, devices count: 1
+2021-04-30 18:15:56,126 - tcpserver - INFO: [P1][127.0.0.1:40304] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:16:02,196 - tcpserver - INFO: [P2][127.0.0.1:56076]device connected, devices count: 1
+2021-04-30 18:16:02,196 - tcpserver - INFO: [P2][127.0.0.1:56076] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:16:02,197 - tcpserver - INFO: [P2][127.0.0.1:56080]device connected, devices count: 1
+2021-04-30 18:16:04,906 - tcpserver - INFO: [P2][127.0.0.1:56080] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:16:06,219 - tcpserver - INFO: [P2][127.0.0.1:56086]device connected, devices count: 1
+2021-04-30 18:16:07,278 - tcpserver - INFO: [P2][127.0.0.1:56086] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:17:04,564 - tcpserver - INFO: Start tcpserver, [name]:P1, [port]: 8000
+2021-04-30 18:17:04,565 - tcpserver - INFO: Start tcpserver, [name]:P2, [port]: 8001
+2021-04-30 18:17:04,567 - tcpserver - INFO: Start tcpserver, [name]:P3, [port]: 8002
+2021-04-30 18:17:15,195 - tcpserver - INFO: [P2][127.0.0.1:56134]device connected, devices count: 1
+2021-04-30 18:17:15,197 - tcpserver - INFO: [P2][127.0.0.1:56134] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:17:15,197 - tcpserver - INFO: [P2][127.0.0.1:56144]device connected, devices count: 1
+2021-04-30 18:17:15,820 - tcpserver - INFO: [P2][127.0.0.1:56144] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:17:26,304 - tcpserver - INFO: [P2][127.0.0.1:56150]device connected, devices count: 1
+2021-04-30 18:17:33,531 - tcpserver - INFO: [P2][127.0.0.1:56150] device disconnected ( Timeout ), devices count: 0
+2021-04-30 18:20:37,601 - tcpserver - INFO: Start tcpserver, [name]:P1, [port]: 8000
+2021-04-30 18:20:37,602 - tcpserver - INFO: Start tcpserver, [name]:P2, [port]: 8001
+2021-04-30 18:20:37,603 - tcpserver - INFO: Start tcpserver, [name]:P3, [port]: 8002
+2021-04-30 18:20:42,949 - tcpserver - INFO: [P3][127.0.0.1:60134]device connected, devices count: 1
+2021-04-30 18:20:53,198 - tcpserver - INFO: [P3][127.0.0.1:60134] device disconnected ( Timeout ), devices count: 0
+2021-04-30 18:23:25,577 - tcpserver - INFO: Start tcpserver, [name]:P1, [port]: 8000
+2021-04-30 18:23:25,578 - tcpserver - INFO: Start tcpserver, [name]:P2, [port]: 8001
+2021-04-30 18:23:25,579 - tcpserver - INFO: Start tcpserver, [name]:P3, [port]: 8002
+2021-04-30 18:24:59,482 - tcpserver - INFO: Start tcpserver, [name]:P1, [port]: 8000
+2021-04-30 18:24:59,483 - tcpserver - INFO: Start tcpserver, [name]:P2, [port]: 8001
+2021-04-30 18:24:59,484 - tcpserver - INFO: Start tcpserver, [name]:P3, [port]: 8002
+2021-04-30 18:28:47,813 - tcpserver - INFO: Start tcpserver, [name]:P1, [port]: 8000
+2021-04-30 18:28:47,814 - tcpserver - INFO: Start tcpserver, [name]:P2, [port]: 8001
+2021-04-30 18:28:47,817 - tcpserver - INFO: Start tcpserver, [name]:P3, [port]: 8002
+2021-04-30 18:28:55,654 - tcpserver - INFO: [P2][127.0.0.1:56682]device connected, devices count: 1
+2021-04-30 18:28:55,655 - tcpserver - INFO: [P2][127.0.0.1:56682] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:28:55,656 - tcpserver - INFO: [P2][127.0.0.1:56688]device connected, devices count: 1
+2021-04-30 18:28:55,656 - tcpserver - INFO: [P2][127.0.0.1:56688] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:28:55,656 - tcpserver - INFO: [P2][127.0.0.1:56692]device connected, devices count: 1
+2021-04-30 18:28:57,304 - tcpserver - INFO: [P2][127.0.0.1:56692] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:29:32,971 - tcpserver - INFO: Start tcpserver, [name]:P1, [port]: 8000
+2021-04-30 18:29:32,973 - tcpserver - INFO: Start tcpserver, [name]:P2, [port]: 8001
+2021-04-30 18:29:32,975 - tcpserver - INFO: Start tcpserver, [name]:P3, [port]: 8002
+2021-04-30 18:32:51,844 - tcpserver - INFO: Start tcpserver, [name]:P1, [port]: 8000
+2021-04-30 18:33:17,500 - tcpserver - INFO: Start tcpserver, [name]:P1, [port]: 8001
+2021-04-30 18:33:21,747 - tcpserver - INFO: [P1][127.0.0.1:56896]device connected, devices count: 1
+2021-04-30 18:33:22,489 - tcpserver - INFO: [P1][127.0.0.1:56896] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:33:30,888 - tcpserver - INFO: [P1][127.0.0.1:41140]device connected, devices count: 1
+2021-04-30 18:33:35,894 - tcpserver - INFO: [P1][127.0.0.1:41140] device disconnected ( Timeout ), devices count: 0
+2021-04-30 18:33:37,253 - tcpserver - INFO: [P1][127.0.0.1:41150]device connected, devices count: 1
+2021-04-30 18:33:39,434 - tcpserver - INFO: [P1][127.0.0.1:41150] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:33:39,885 - tcpserver - INFO: [P1][127.0.0.1:41154]device connected, devices count: 1
+2021-04-30 18:33:40,254 - tcpserver - INFO: [P1][127.0.0.1:41154] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:33:40,518 - tcpserver - INFO: [P1][127.0.0.1:41156]device connected, devices count: 1
+2021-04-30 18:33:40,740 - tcpserver - INFO: [P1][127.0.0.1:41156] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:34:01,342 - tcpserver - INFO: Start tcpserver, [name]:P1, [port]: 8001
+2021-04-30 18:34:06,546 - tcpserver - INFO: [P1][127.0.0.1:56948]device connected, devices count: 1
+2021-04-30 18:34:07,699 - tcpserver - INFO: [P1][127.0.0.1:56948] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:34:08,587 - tcpserver - INFO: [P1][127.0.0.1:56950]device connected, devices count: 1
+2021-04-30 18:34:12,371 - tcpserver - INFO: [P1][127.0.0.1:56950] device disconnected ( Stream is closed ), devices count: 0
+2021-04-30 18:35:23,996 - tcpserver - INFO: [P1][127.0.0.1:57008]device connected, devices count: 1
+2021-04-30 18:35:31,402 - tcpserver - INFO: [P1][127.0.0.1:57008] device disconnected ( Timeout ), devices count: 0
+2021-04-30 18:36:50,442 - tcpserver - INFO: Start tcpserver, [name]:P1, [port]: 8001
+2021-04-30 18:37:00,464 - tcpserver - INFO: [P1][127.0.0.1:57096]device connected, devices count: 1
+2021-04-30 18:37:06,254 - tcpserver - INFO: [P1][127.0.0.1:57096] device disconnected ( Stream is closed ), devices count: 0

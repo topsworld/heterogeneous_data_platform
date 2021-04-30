@@ -2,21 +2,19 @@
 from configparser import Error
 import datetime
 import logging.config
-from multiprocessing import Process
-from os import name
-from socket import IPPROTO_PIM
-import time
+from multiprocessing import Process, Queue
 from tornado.tcpserver import TCPServer
 from tornado.iostream import StreamClosedError
 from tornado import gen, ioloop
-import functools
+
 
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('tcpserver')
 
 
 """
-采用进程启动tcpserver，同时设置连接超时时间，
+采用进程启动tcpserver，同时设置连接超时时间
+目前只支持单个端口开启
 
 """
 
@@ -42,18 +40,20 @@ class tcp_packet_item:
 
         
 class service_tcpserver(TCPServer):
-    def __init__(self, port=8000, name = "no set", timeout=recv_timeout, *args, **kwargs):
+    def __init__(self, recv_queue, port=8000, name = "no set"
+        , timeout=recv_timeout, *args, **kwargs):
         super(service_tcpserver, self).__init__(*args, **kwargs)
         self.timeout = timeout
         self.devices = dict()
         self.name = name
         self.port = port
+        self.recv_queue = recv_queue
         self.io_loop = ioloop.IOLoop.current()
 
     @gen.coroutine
     def report_devices(self):
         while True:
-            logger.debug(self.devices)
+            logger.debug("[%s]: %s"%(self.name, self.devices))
             yield gen.sleep(5)
     
     def add_callback(self, func):
@@ -62,8 +62,8 @@ class service_tcpserver(TCPServer):
     def close_device(self, ipport):
         self.devices[ipport]["stream"].close()
         del self.devices[ipport]
-        logger.info("[%s] device disconnected ( %s ), devices count: %s"
-                    % (ipport, "User close", len(self.devices)))
+        logger.info("[%s][%s] device disconnected ( %s ), devices count: %s"
+                    % (self.name, ipport, "User close", len(self.devices)))
     @gen.coroutine
     def handle_stream(self, stream, address):
         # Add connect to the dict
@@ -71,23 +71,32 @@ class service_tcpserver(TCPServer):
         self.devices[ipport] = {
             "stream": stream,
         }
-        logger.info("[%s] device connected, devices count: %s"
-            % (ipport, len(self.devices)))
+        logger.info("[%s][%s]device connected, devices count: %s"
+            % (self.name, ipport, len(self.devices)))
 
         # Listen to the message
         while True:
             try:
                 data = yield gen.with_timeout(datetime.timedelta(seconds=self.timeout), 
                     stream.read_until(recv_end_str))
+                yield stream.write(data)
                 logger.debug("Receive data [%s] from %s" % (data, ipport))
+
+                recv_pkt = tcp_packet_item()
+                recv_pkt.server_port = self.port
+                recv_pkt.recv_address = ipport
+                recv_pkt.recv_msg = data
+
+                # Add msg to tht queue
+                self.recv_queue.put(recv_pkt)
 
             except Exception as err:
                 # Close socket
                 stream.close()
                 # Del device from dict
                 del self.devices[ipport]
-                logger.info("[%s] device disconnected ( %s ), devices count: %s"
-                    % (ipport,err.args[0] , len(self.devices)))
+                logger.info("[%s][%s] device disconnected ( %s ), devices count: %s"
+                    % (self.name, ipport,err.args[0] , len(self.devices)))
                 break
                 
 
@@ -96,6 +105,9 @@ class service_tcpserver(TCPServer):
 
     @gen.coroutine
     def start_listen(self):
+        # self.bind(self.port)
+        # self.start(1) 
+
         self.listen(self.port)
         # Add callback func
         # self.add_callback(self.report_devices)
@@ -104,11 +116,12 @@ class service_tcpserver(TCPServer):
 
 
 class process_tcpserver(Process):
-    def __init__(self, port, name="no set"):
+    def __init__(self, port, recv_queue, name="no set"):
         super(process_tcpserver, self).__init__()
         self.port = port
         self.name = name
-        self.server = service_tcpserver(port=self.port, name=self.name)
+        self.recv_queue = recv_queue
+        self.server = service_tcpserver(port=self.port,recv_queue=self.recv_queue, name=self.name)
 
     def run(self):
         try:
@@ -120,17 +133,16 @@ class process_tcpserver(Process):
         self.terminate()
         logger.info("Terminate tcpserver, [name]:%s, [port]:%s" % (self.name, self.port))
 
-if __name__ == '__main__':
-    obj_process_tcpserver = process_tcpserver(8000)
-    obj_process_tcpserver.start()
-    obj_process_tcpserver1 = process_tcpserver(8001)
-    obj_process_tcpserver1.start()
-    obj_process_tcpserver2 = process_tcpserver(8002)
-    obj_process_tcpserver2.start()
-    
-    time.sleep(5)
 
-    obj_process_tcpserver2.stop()
+
+# if __name__ == '__main__':
+#     q = Queue()
+#     obj_process_tcpserver = process_tcpserver(port= 8001, recv_queue=q, name="P1")
+#     obj_process_tcpserver.start()
+    
+    # time.sleep(5)
+
+    # obj_process_tcpserver2.stop()
 
 
 
