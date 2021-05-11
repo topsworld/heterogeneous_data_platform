@@ -30,9 +30,6 @@ class database_helper:
         self.tcp_table_dict = dict()
         self.udp_table_dict = dict()
         self.mqtt_table_dict = dict()
-        self.tcp_create_table([8001,8002])
-        self.udp_create_table([8001,8002])
-        self.mqtt_create_table(["test1", "test2"])
         # Create database
         # self.metadata.create_all(self.engine)
 
@@ -55,6 +52,13 @@ class database_helper:
         self.metadata.create_all(self.engine)
         
         return self.tcp_table_dict
+    
+    def tcp_add_data(self, tcp_port, data):
+        tcp_data = self.tcp_table_dict[str(tcp_port)]["table_model"](
+            recv_time=datetime.now(), data=data)
+        with dh.DBsession.begin() as session:
+            session.add(tcp_data)
+        
 
     def udp_create_table(self, port_list: list):
         for udp_port in port_list:
@@ -102,16 +106,15 @@ class database_helper:
             data = Column(Text) 
         return custom_model 
 
-    # with Session.begin() as session:
-    # session.add(some_object)
-    # session.add(some_other_object)
         
 
 # class tcp_data_helper:
 #     def __init__():
 
 dh = database_helper("test", "0031", "192.168.31.86:3306", "test")
-
+dh.tcp_create_table([8001,8002])
+dh.udp_create_table([8001,8002])
+dh.mqtt_create_table(["test1", "test2"])
 test = dh.udp_table_dict["8001"]["table_model"](recv_time=datetime.now(), data="tese")
 with dh.DBsession.begin() as session:
     session.add(test)
