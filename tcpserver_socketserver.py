@@ -87,7 +87,7 @@ class service_tcpserver(StreamRequestHandler):
         self.max_count = max_count
 
         self.tcpserver = ThreadingTCPServer(('', self.port), self)
-        logger.info("Start tcpserver, [name]:%s, [port]: %s" % (self.name, self.port))
+        logger.info("Start tcpserver, [name]: %s, [port]: %s" % (self.name, self.port))
         self.tcpserver.serve_forever()
 
     def close_device(self, ip_port):

@@ -26,3 +26,6 @@
 2021-05-01 21:04:44,296 - tcpserver - INFO: [TCP Server-2][('127.0.0.1', 4669)] device disconnected ( timed out ), devices count: 0
 2021-05-01 21:04:45,123 - tcpserver - INFO: [TCP Server-1][('127.0.0.1', 4689)]device connected, devices count: 1
 2021-05-01 21:04:52,546 - tcpserver - INFO: [TCP Server-1][('127.0.0.1', 4689)] device disconnected ( timed out ), devices count: 0
+2021-05-01 23:38:23,283 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-2, [port]: 8001
+2021-05-01 23:38:23,285 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-3, [port]: 8002
+2021-05-01 23:38:23,288 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-1, [port]: 8000
