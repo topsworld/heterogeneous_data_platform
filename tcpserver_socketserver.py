@@ -1,10 +1,11 @@
 # coding=utf-8
+from datetime import datetime
 import logging.config
 from multiprocessing import Process
 from multiprocessing import Queue as msg_queue
 from socketserver import ThreadingTCPServer, StreamRequestHandler
 
-# logging.config.fileConfig('logging.conf')
+logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('tcpserver')
 
 """
@@ -32,13 +33,14 @@ class tcp_packet_item:
     """
     Tcp packet item
     """
-    def __init__(self) -> None:
+    def __init__(self, server_port: int, recv_time: datetime, recv_address: str, recv_msg: str) -> None:
         """
         Structure initialization
         """
-        self.server_port = 8000
-        self.recv_address = ""
-        self.recv_msg = b""
+        self.server_port = server_port
+        self.recv_time = recv_time
+        self.recv_address = recv_address
+        self.recv_msg = recv_msg
 
     def to_dict(self):
         """
@@ -46,7 +48,8 @@ class tcp_packet_item:
         :return: tcp packet item dict
         """
         return {
-            "server_port": self.server_port,
+            "server_port": str(self.server_port),
+            "recv_time": self.recv_time,
             "recv_address": self.recv_address,
             "recv_msg": self.recv_msg
         }
@@ -124,14 +127,12 @@ class service_tcpserver(StreamRequestHandler):
         try:
             for line in self.rfile:
                 logger.debug("TCP receive data [%s] from %s" % (line, ip_port))
-                recv_pkt = tcp_packet_item()
-                recv_pkt.server_port = self.port
-                recv_pkt.recv_address = ip_port
-                recv_pkt.recv_msg = line
+                recv_pkt = tcp_packet_item(server_port=self.port, recv_time=datetime.now()
+                , recv_address=ip_port, recv_msg=line)
 
                 # Add msg to the queue
                 if self.recv_queue is not None:
-                    self.recv_queue.put(recv_pkt)
+                    self.recv_queue.put(recv_pkt.to_dict())
             raise Exception("Disconnect from client")
         except Exception as err:
             # Close socket
@@ -223,21 +224,34 @@ class process_tcpserver(Process):
         logger.info("Terminate tcpserver, [name]:%s, [port]:%s" % (self.name, self.port))
 
 
+# class thread_tcpserver(process_tcpserver):
+#     pass
+
 """
 Example
 """
 # if __name__ == '__main__':
 #     # Process global queue
 #     global_queue = msg_queue()
-#
+
 #     # Create three TCP services with port numbers 8000, 8001, and 8002.
-#     obj_process_tcpserver = process_tcpserver(port=8000, recv_queue=global_queue, name="TCP Server-1")
-#     obj_process_tcpserver.start()
+#     obj_process_tcpserver1 = process_tcpserver(port=8000, recv_queue=global_queue, name="TCP Server-1")
+#     obj_process_tcpserver1.start()
 #     obj_process_tcpserver2 = process_tcpserver(port=8001, recv_queue=global_queue, name="TCP Server-2")
 #     obj_process_tcpserver2.start()
 #     obj_process_tcpserver3 = process_tcpserver(port=8002, recv_queue=global_queue, name="TCP Server-3")
 #     obj_process_tcpserver3.start()
-#
+#     obj_process_tcpserver4 = process_tcpserver(port=8003, recv_queue=global_queue, name="TCP Server-4")
+#     obj_process_tcpserver4.start()
+#     obj_process_tcpserver5 = process_tcpserver(port=8004, recv_queue=global_queue, name="TCP Server-5")
+#     obj_process_tcpserver5.start()
+#     obj_process_tcpserver6 = process_tcpserver(port=8005, recv_queue=global_queue, name="TCP Server-6")
+#     obj_process_tcpserver6.start()
+#     obj_process_tcpserver7 = process_tcpserver(port=8006, recv_queue=global_queue, name="TCP Server-7")
+#     obj_process_tcpserver7.start()
+#     obj_process_tcpserver8 = process_tcpserver(port=8007, recv_queue=global_queue, name="TCP Server-8")
+#     obj_process_tcpserver8.start()
+
 #     # The main process receives and prints messages
 #     while True:
 #         msg = global_queue.get()
