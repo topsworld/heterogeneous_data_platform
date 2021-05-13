@@ -5,7 +5,7 @@ EOF
 program_description="Python-based heterogeneous data platform"
 program_main_name="main.py"
 program_apk_package="python3:python3 pip3:python3-pip can:python3-can"
-program_python_package="sqlalchemy:sqlalchemy gpio:RPi.GPIO paho.mqtt:paho-mqtt json:json logging:log threading:threading"
+program_python_package="sqlalchemy:sqlalchemy paho.mqtt:paho-mqtt json:json logging:log threading:threading"
 # TODO: Function to display message
 function echo_blue(){
   echo -e "\033[34m$1\033[0m"

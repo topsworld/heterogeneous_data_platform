@@ -50,11 +50,11 @@ class service_udpserver(BaseRequestHandler):
 
         # Start udp server
         self.udpserver = ThreadingUDPServer(('', self.port), self)
-        logger.info("Start udpserver, [name]:%s, [port]: %s" % (self.name, self.port))
+        logger.info("Start udpserver, [name]: %s, [port]: %s" % (self.name, self.port))
         self.udpserver.serve_forever()
 
     def handle(self):
-        ip_port = self.client_address
+        ip_port = f"{self.client_address[0]}:{self.client_address[1]}"
         # logger.info("[%s][%s]device connected."
         #             % (self.name, ip_port))
         # Get message and client socket

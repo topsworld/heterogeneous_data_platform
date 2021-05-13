@@ -111,7 +111,7 @@ class service_tcpserver(StreamRequestHandler):
         :return: None
         """
         # Add connect to the dict
-        ip_port = self.client_address
+        ip_port = f"{self.client_address[0]}:{self.client_address[1]}"
         # Determine if the connection has reached the upper limit
         if len(self.devices) >= self.max_count:
             # self.wfile.write(b"Connection reached the upper limit\r\n")
@@ -171,7 +171,7 @@ class service_tcpserver(StreamRequestHandler):
 # serv.serve_forever()
 
 
-class process_tcpserver(Process):
+class process_tcpserver_single_port(Process):
     """
     TCP service process, Inherited from multiprocessing Process
     """
@@ -185,7 +185,7 @@ class process_tcpserver(Process):
                 from multiprocessing import Queue
         :param name: TCP Service name, default: no set
         """
-        super(process_tcpserver, self).__init__()
+        super(process_tcpserver_single_port, self).__init__()
         self.port = port
         self.name = name
         self.recv_queue = recv_queue
@@ -224,8 +224,21 @@ class process_tcpserver(Process):
         logger.info("Terminate tcpserver, [name]:%s, [port]:%s" % (self.name, self.port))
 
 
-# class thread_tcpserver(process_tcpserver):
-#     pass
+
+class process_tcpserver:
+    def __init__(self, tcp_server_info_dict: dict()):
+        self.tcp_server_info_dict = tcp_server_info_dict
+        for port_str, info in self.tcp_server_info_dict["port"].items():
+            info["instance"] = process_tcpserver_single_port(
+                port=int(port_str), recv_queue=self.tcp_server_info_dict["queue"]
+                , name=info["name"])
+
+    def start(self):
+        for port_str, info in self.tcp_server_info_dict["port"].items():
+            info["instance"].start()
+
+
+
 
 """
 Example

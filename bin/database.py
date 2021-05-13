@@ -3,15 +3,14 @@
 from datetime import datetime
 from logging import log
 import logging.config
-from multiprocessing.context import Process
-from multiprocessing import Queue as msg_queue
-from sqlalchemy.sql.expression import true
-
-from sqlalchemy.sql.functions import func
-
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('database')
 
+from multiprocessing.context import Process
+from multiprocessing import Queue as msg_queue
+
+from sqlalchemy.sql.expression import true
+from sqlalchemy.sql.functions import func
 from sqlalchemy import create_engine, MetaData, Table
 from sqlalchemy import Column, String, Integer, Text, Boolean, DateTime, ForeignKey, Table ,Float
 from sqlalchemy.orm import relationship, sessionmaker,mapper, with_expression
@@ -143,7 +142,8 @@ class raw_database_helper:
             Table(table_name, self.metadata,
                 Column('id',Integer,autoincrement=True,primary_key=True),
                 Column('recv_time',DateTime),
-                Column('data',Text),
+                Column("recv_address", String(30)),
+                Column('recv_msg',Text),
             )
             self.tcp_table_dict[str(tcp_port)] = {
                 "table_name": table_name,
@@ -160,7 +160,8 @@ class raw_database_helper:
             Table(table_name, self.metadata,
                 Column('id',Integer,autoincrement=True,primary_key=True),
                 Column('recv_time',DateTime),
-                Column('data',Text),
+                Column("recv_address", String(30)),
+                Column('recv_msg',Text),
             )
             self.udp_table_dict[str(udp_port)] = {
                 "table_name": table_name,
@@ -174,12 +175,14 @@ class raw_database_helper:
     def mqtt_create_table(self, sub_list: list):
         # TODO: Add sub topic verify
         # Verify code in here
-        for mqtt_sub in sub_list:
+        for mqtt_sub_raw in sub_list:
+            mqtt_sub = mqtt_sub_raw# mqtt_sub_raw.replace('/','_').replace('#','').replace('*','')
             table_name = 'raw_mqtt_data_'+mqtt_sub
             model_table = Table(table_name, self.metadata,
                 Column('id',Integer,autoincrement=True,primary_key=True),
                 Column('recv_time',DateTime),
-                Column('data',Text),
+                Column("recv_address", String(30)),
+                Column('recv_msg',Text),
             )
             self.mqtt_table_dict[mqtt_sub] = {
                 "table_name": table_name,
@@ -197,7 +200,8 @@ class raw_database_helper:
 
             id = Column(Integer, primary_key=True, autoincrement=True) 
             recv_time = Column(DateTime) 
-            data = Column(Text) 
+            recv_address = Column(String)
+            recv_msg = Column(Text) 
         return custom_model 
     
 
@@ -207,25 +211,25 @@ class raw_database_helper:
             results = session.execute(sql_str).fetchall()
         return results
 
-    def add_data(self, obj_dict: dict(), recv_time, data):
+    def add_data(self, obj_dict: dict(), recv_time: datetime, recv_address: str, recv_msg: str):
         obj_data = obj_dict["table_model"](
-            recv_time=recv_time, data=data
+            recv_time=recv_time, recv_address=recv_address, recv_msg=recv_msg
         )
         with self.DBsession.begin() as session:
             session.add(obj_data)
         return True
     
-    def tcp_add_data(self, tcp_port, recv_time, data):
-        return self.add_data(self.tcp_table_dict[str(tcp_port)], 
-        recv_time=recv_time, data=data)
+    def tcp_add_data(self, tcp_port, recv_time: datetime, recv_address: str, recv_msg: str):
+        return self.add_data(self.tcp_table_dict[str(tcp_port)]
+        , recv_time=recv_time, recv_address=recv_address, recv_msg=recv_msg)
 
-    def udp_add_data(self, udp_port, recv_time, data):
+    def udp_add_data(self, udp_port, recv_time: datetime, recv_address: str, recv_msg: str):
         return self.add_data(self.udp_table_dict[str(udp_port)]
-        ,recv_time=recv_time, data=data)
+        , recv_time=recv_time, recv_address=recv_address, recv_msg=recv_msg)
 
-    def mqtt_add_data(self, sub_topic, recv_time, data):
+    def mqtt_add_data(self, sub_topic, recv_time: datetime, recv_address: str, recv_msg: str):
         return self.add_data(self.mqtt_table_dict[sub_topic]
-        , recv_time=recv_time, data=data)
+        , recv_time=recv_time, recv_address=recv_address, recv_msg=recv_msg)
     
     def delete_all_raw_table(self):
         self.metadata.drop_all(self.engine)
@@ -255,21 +259,21 @@ class thread_tcp_handle(Thread):
             logger.waring("TCP msg queue is None, [thread_tcp_handle] exited!")
             return
         while true:
-            try:
-                tcp_msg = self.server_tcp_dict["queue"].get()
-                if self.server_tcp_dict["port"][tcp_msg["server_port"]]["is_save_raw_data"] \
-                    and self.save_tcp_raw_data is not None:
-                    self.save_tcp_raw_data(tcp_port=tcp_msg["server_port"]
-                    , recv_time=tcp_msg["recv_time"], data= tcp_msg["recv_msg"])
-                
-                if self.server_tcp_dict["port"][tcp_msg["server_port"]]["custom_handle"] is not None:
-                    self.server_tcp_dict["port"][tcp_msg["server_port"]]["custom_handle"](self.db_helper, tcp_msg)
-            except Exception as err:
-                logger.error(err.args)
+            #try:
+            tcp_msg = self.server_tcp_dict["queue"].get()
+            if self.server_tcp_dict["port"][tcp_msg["server_port"]]["is_save_raw_data"] \
+                and self.save_tcp_raw_data is not None:
+                self.save_tcp_raw_data(tcp_port=tcp_msg["server_port"], recv_time=tcp_msg["recv_time"]
+                , recv_address=tcp_msg["recv_address"], recv_msg= tcp_msg["recv_msg"])
+            
+            if self.server_tcp_dict["port"][tcp_msg["server_port"]]["custom_handle"] is not None:
+                self.server_tcp_dict["port"][tcp_msg["server_port"]]["custom_handle"](self.db_helper, tcp_msg)
+            # except Exception as err:
+            #     logger.error(err.args)
 
         logger.info("TCP data handle thread exit!")
 
-    def save_tcp_raw_data(self, tcp_port, recv_time, data):
+    def save_tcp_raw_data(self, tcp_port, recv_time: datetime, recv_address: str, recv_msg: str):
         pass
 
 
@@ -289,8 +293,8 @@ class thread_udp_handle(Thread):
                 udp_msg = self.server_udp_dict["queue"].get()
                 if self.server_udp_dict["port"][udp_msg["server_port"]]["is_save_raw_data"]\
                     and self.save_udp_raw_data is not None:
-                    self.save_udp_raw_data(udp_port=udp_msg["server_port"]
-                    , recv_time=udp_msg["recv_time"], data=udp_msg["recv_msg"])
+                    self.save_udp_raw_data(udp_port=udp_msg["server_port"], recv_time=udp_msg["recv_time"]
+                    , recv_address=udp_msg["recv_address"], recv_msg= udp_msg["recv_msg"])
 
                 if self.server_udp_dict["port"][udp_msg["server_port"]]["custom_handle"] is not None:
                     self.server_udp_dict["port"][udp_msg["server_port"]]["custom_handle"](self.db_helper, udp_msg)
@@ -301,7 +305,7 @@ class thread_udp_handle(Thread):
         logger.info("UDP data handle thread exit!")
 
         
-    def save_udp_raw_data(self, udp_port, recv_time, data):
+    def save_udp_raw_data(self, udp_port, recv_time: datetime, recv_address: str, recv_msg: str):
         pass
 
 
@@ -321,8 +325,8 @@ class thread_mqtt_handle(Thread):
                 mqtt_msg = self.server_mqtt_dict["queue"].get()
                 if self.server_mqtt_dict["sub"][mqtt_msg["sub_topic"]]["is_save_raw_data"]\
                     and self.save_mqtt_raw_data is not None:
-                    self.save_mqtt_raw_data(sub_topic=mqtt_msg["sub_topic"]
-                    , recv_time=mqtt_msg["recv_time"], data=mqtt_msg["recv_msg"])
+                    self.save_mqtt_raw_data(sub_topic=mqtt_msg["sub_topic"], recv_time=mqtt_msg["recv_time"]
+                    , recv_address=mqtt_msg["recv_address"], recv_msg= mqtt_msg["recv_msg"])
                 
                 if self.server_mqtt_dict["sub"][mqtt_msg["sub_topic"]]["custom_handle"] is not None:
                     self.server_mqtt_dict["sub"][mqtt_msg["sub_topic"]]["custom_handle"](self.db_helper, mqtt_msg)
@@ -332,7 +336,7 @@ class thread_mqtt_handle(Thread):
         
         logger.info("MQTT data handle thread exit!")
     
-    def save_mqtt_raw_data(self, sub_topic, recv_time, data):
+    def save_mqtt_raw_data(self, sub_topic, recv_time: datetime, recv_address: str, recv_msg: str):
         pass
 
 class process_database(Process):
