@@ -21,3 +21,12 @@
 2021-05-01 23:38:23,288 - udpserver - INFO: Start udpserver, [name]:UDP Server-2, [port]: 8001
 2021-05-01 23:38:23,289 - udpserver - INFO: Start udpserver, [name]:UDP Server-3, [port]: 8002
 2021-05-01 23:38:23,290 - udpserver - INFO: Start udpserver, [name]:UDP Server-1, [port]: 8000
+2021-05-13 09:58:38,262 - udpserver - INFO: Start udpserver, [name]:UDP Server-1, [port]: 8000
+2021-05-13 09:58:38,265 - udpserver - INFO: Start udpserver, [name]:UDP Server-2, [port]: 8001
+2021-05-13 09:58:38,267 - udpserver - INFO: Start udpserver, [name]:UDP Server-3, [port]: 8002
+2021-05-13 09:59:12,028 - udpserver - INFO: Start udpserver, [name]:UDP Server-1, [port]: 8000
+2021-05-13 09:59:12,030 - udpserver - INFO: Start udpserver, [name]:UDP Server-2, [port]: 8001
+2021-05-13 09:59:12,033 - udpserver - INFO: Start udpserver, [name]:UDP Server-3, [port]: 8002
+2021-05-13 10:03:17,303 - udpserver - INFO: Start udpserver, [name]:UDP Server-1, [port]: 8000
+2021-05-13 10:03:17,305 - udpserver - INFO: Start udpserver, [name]:UDP Server-2, [port]: 8001
+2021-05-13 10:03:17,307 - udpserver - INFO: Start udpserver, [name]:UDP Server-3, [port]: 8002

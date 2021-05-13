@@ -1,0 +1,12 @@
+[Unit]
+Description=program_description
+After=network.target
+
+[Service]
+Restart=always
+RestartSec=10
+ExecStart=/usr/local/bin/program_name/program_main_name /usr/local/etc/program_name/program_name.config
+ExecStop=/bin/kill $MAINPID
+
+[Install]
+WantedBy=multi-user.target

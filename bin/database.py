@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 from datetime import datetime
+from logging import log
 import logging.config
 from multiprocessing.context import Process
 from multiprocessing import Queue as msg_queue
+from sqlalchemy.sql.expression import true
 
 from sqlalchemy.sql.functions import func
 
@@ -79,6 +81,8 @@ class custom_database_helper:
     def custom_handle_sample(self, msg):
         pass
         
+    def delete_all_table(self):
+        self.Base.metadata.drop_all(self.engine)
 
 
 
@@ -243,67 +247,94 @@ class thread_tcp_handle(Thread):
     def __init__(self, server_tcp_dict: dict(), save_raw_data, db_helper):
         super(thread_tcp_handle, self).__init__()
         self.server_tcp_dict = server_tcp_dict
-        self.save_raw_data = save_raw_data
+        self.save_tcp_raw_data = save_raw_data
         self.db_helper = db_helper
 
     def run(self):
-        while self.server_tcp_dict["queue"] is not None:
+        if self.server_tcp_dict["queue"] is None:
+            logger.waring("TCP msg queue is None, [thread_tcp_handle] exited!")
+            return
+        while true:
             try:
                 tcp_msg = self.server_tcp_dict["queue"].get()
                 if self.server_tcp_dict["port"][tcp_msg["server_port"]]["is_save_raw_data"] \
-                    and self.save_raw_data is not None:
-                    self.save_raw_data(tcp_port = tcp_msg["server_port"]
-                    , recv_time= tcp_msg["recv_time"], data= tcp_msg["recv_msg"])
+                    and self.save_tcp_raw_data is not None:
+                    self.save_tcp_raw_data(tcp_port=tcp_msg["server_port"]
+                    , recv_time=tcp_msg["recv_time"], data= tcp_msg["recv_msg"])
                 
                 if self.server_tcp_dict["port"][tcp_msg["server_port"]]["custom_handle"] is not None:
                     self.server_tcp_dict["port"][tcp_msg["server_port"]]["custom_handle"](self.db_helper, tcp_msg)
             except Exception as err:
                 logger.error(err.args)
-        logger.info("Tcp data handle thread exit!")
 
-    def save_raw_data(self, tcp_port, recv_time, data):
+        logger.info("TCP data handle thread exit!")
+
+    def save_tcp_raw_data(self, tcp_port, recv_time, data):
         pass
 
 
-# class thread_udp_handle(threading.Thread):
-#     def __init__(self, server_udp_dict: dict()):
-#         super(thread_udp_handle, self).__init__()
-#         self.server_udp_dict = server_udp_dict
+class thread_udp_handle(Thread):
+    def __init__(self, server_udp_dict: dict(), save_raw_data, db_helper):
+        super(thread_udp_handle, self).__init__()
+        self.server_udp_dict = server_udp_dict
+        self.save_udp_raw_data = save_raw_data
+        self.db_helper = db_helper
 
-#     def run(self) -> None:
-#         while True:
-#             try:
-#                 udp_msg = self.server_udp_dict["queue"].get()
-#                 if self.server_udp_dict["port"][udp_msg["server_port"]]["is_save_raw_data"]:
-#                     self.sa
+    def run(self):
+        if self.server_udp_dict["queue"] is None:
+            logger.waring("UDP msg queue is None, [thread_udp_handle] exited!")
+            return
+        while True:
+            try:
+                udp_msg = self.server_udp_dict["queue"].get()
+                if self.server_udp_dict["port"][udp_msg["server_port"]]["is_save_raw_data"]\
+                    and self.save_udp_raw_data is not None:
+                    self.save_udp_raw_data(udp_port=udp_msg["server_port"]
+                    , recv_time=udp_msg["recv_time"], data=udp_msg["recv_msg"])
 
-#             except Exception as err:
-#                 logger.error(err.args)
+                if self.server_udp_dict["port"][udp_msg["server_port"]]["custom_handle"] is not None:
+                    self.server_udp_dict["port"][udp_msg["server_port"]]["custom_handle"](self.db_helper, udp_msg)
+
+            except Exception as err:
+                logger.error(err.args)
+
+        logger.info("UDP data handle thread exit!")
+
+        
+    def save_udp_raw_data(self, udp_port, recv_time, data):
+        pass
 
 
-"""
-server_dict = {
-    "database":{
-        "raw_db_obj":obj,
-        "custom_db_obj": obj
-    }
-    "tcp":{
-        "queue":queue,
-        "port"：{
-            “8001”：{
-                "status":1,
-                "is_save_raw_data": True,
-                "name": "name",
-                "custom_handle":func1,
-                "table_info":{
-                    "table_name":name,
-                    "table_model":model,
-                }
-            }
-        }
-    }
-}
-"""
+class thread_mqtt_handle(Thread):
+    def __init__(self, server_mqtt_dict: dict(), save_raw_data, db_helper):
+        super(thread_mqtt_handle, self).__init__()
+        self.server_mqtt_dict = server_mqtt_dict
+        self.save_mqtt_raw_data = save_raw_data
+        self.db_helper = db_helper
+    
+    def run(self):
+        if self.server_mqtt_dict["queue"] is None:
+            logger.waring("MQTT msg queue is None, [thread_mqtt_handle] exited!")
+            return
+        while True:
+            try:
+                mqtt_msg = self.server_mqtt_dict["queue"].get()
+                if self.server_mqtt_dict["sub"][mqtt_msg["sub_topic"]]["is_save_raw_data"]\
+                    and self.save_mqtt_raw_data is not None:
+                    self.save_mqtt_raw_data(sub_topic=mqtt_msg["sub_topic"]
+                    , recv_time=mqtt_msg["recv_time"], data=mqtt_msg["recv_msg"])
+                
+                if self.server_mqtt_dict["sub"][mqtt_msg["sub_topic"]]["custom_handle"] is not None:
+                    self.server_mqtt_dict["sub"][mqtt_msg["sub_topic"]]["custom_handle"](self.db_helper, mqtt_msg)
+
+            except Exception as err:
+                logger.error(err.args)
+        
+        logger.info("MQTT data handle thread exit!")
+    
+    def save_mqtt_raw_data(self, sub_topic, recv_time, data):
+        pass
+
 class process_database(Process):
     def __init__(self, server_dict: dict()):
         super(process_database, self).__init__()
@@ -319,7 +350,6 @@ class process_database(Process):
 
         # 获取原始数据表
         for tcp_port in self.raw_db_helper.tcp_table_dict.keys():
-
             self.server_dict["tcp"]["port"][tcp_port]["table_info"] = self.raw_db_helper.tcp_table_dict[tcp_port]
 
         for udp_port in self.raw_db_helper.udp_table_dict.keys():
@@ -332,17 +362,35 @@ class process_database(Process):
         self.custom_db_helper = custom_database_helper("test", "0031", "192.168.31.86:3306")
         self.server_dict["database"]["custom_db_obj"] = self.custom_db_helper
 
+        # TCP handle thread
         self.thread_tcp = thread_tcp_handle(server_tcp_dict=self.server_dict["tcp"]
         , save_raw_data= self.server_dict["database"]["raw_db_obj"].tcp_add_data
+        , db_helper=self.custom_db_helper)
+
+        # UDP handle thread
+        self.thread_udp = thread_udp_handle(server_udp_dict=self.server_dict["udp"]
+        , save_raw_data=self.server_dict["database"]["raw_db_obj"].udp_add_data
+        , db_helper=self.custom_db_helper)
+
+        # MQTT handle thread
+        self.thread_mqtt = thread_mqtt_handle(server_mqtt_dict=self.server_dict["mqtt"]
+        , save_raw_data=self.server_dict["database"]["raw_db_obj"].mqtt_add_data
         , db_helper=self.custom_db_helper)
 
         
 
 
     def run(self):    
+        # Start TCP, UDP, MQTT message processing thread.
         self.thread_tcp.start()
+        self.thread_udp.start()
+        self.thread_mqtt.start()
+        
+        # Waiting for all threads to exit
+        self.thread_tcp.join() 
+        self.thread_udp.join()
+        self.thread_mqtt.join()
 
-        self.thread_tcp.join()           
 
 
 # tcp_msg_queue = msg_queue()

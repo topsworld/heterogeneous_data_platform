@@ -83,3 +83,20 @@
 2021-05-12 19:34:22,308 - database - INFO: Raw database initialize successfully.
 2021-05-12 19:34:22,380 - database - INFO: Custom database initialize successfully.
 2021-05-12 19:34:26,705 - database - ERROR: ("'custom_database_helper' object has no attribute 'con_raw_db_str'",)
+2021-05-13 09:55:27,947 - database - INFO: Raw database initialize successfully.
+2021-05-13 09:55:28,000 - database - INFO: Custom database initialize successfully.
+2021-05-13 09:57:06,467 - database - INFO: Raw database initialize successfully.
+2021-05-13 09:57:06,521 - database - INFO: Custom database initialize successfully.
+2021-05-13 09:58:38,166 - database - INFO: Raw database initialize successfully.
+2021-05-13 09:58:38,232 - database - INFO: Custom database initialize successfully.
+2021-05-13 09:58:43,777 - database - ERROR: ("'udp_packet_item' object is not subscriptable",)
+2021-05-13 09:58:43,778 - database - INFO: UDP data handle thread exit!
+2021-05-13 09:59:11,950 - database - INFO: Raw database initialize successfully.
+2021-05-13 09:59:12,001 - database - INFO: Custom database initialize successfully.
+2021-05-13 09:59:19,164 - database - ERROR: (8000,)
+2021-05-13 09:59:19,165 - database - INFO: UDP data handle thread exit!
+2021-05-13 10:03:17,218 - database - INFO: Raw database initialize successfully.
+2021-05-13 10:03:17,279 - database - INFO: Custom database initialize successfully.
+2021-05-13 10:03:20,713 - database - INFO: UDP data handle thread exit!
+2021-05-13 10:03:29,608 - database - INFO: UDP data handle thread exit!
+2021-05-13 10:03:36,793 - database - INFO: UDP data handle thread exit!

@@ -124,3 +124,20 @@
 2021-05-12 19:34:22,390 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-3, [port]: 8002
 2021-05-12 19:34:25,711 - tcpserver - INFO: [TCP Server-1][('127.0.0.1', 49266)]device connected, devices count: 1
 2021-05-12 19:34:31,673 - tcpserver - INFO: [TCP Server-1][('127.0.0.1', 49266)] device disconnected ( timed out ), devices count: 0
+2021-05-13 09:55:28,015 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-1, [port]: 8000
+2021-05-13 09:55:28,018 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-2, [port]: 8001
+2021-05-13 09:55:28,022 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-3, [port]: 8002
+2021-05-13 09:55:32,727 - tcpserver - INFO: [TCP Server-1][('127.0.0.1', 51718)]device connected, devices count: 1
+2021-05-13 09:55:38,790 - tcpserver - INFO: [TCP Server-1][('127.0.0.1', 51718)] device disconnected ( timed out ), devices count: 0
+2021-05-13 09:57:06,528 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-1, [port]: 8000
+2021-05-13 09:57:06,531 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-2, [port]: 8001
+2021-05-13 09:57:06,533 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-3, [port]: 8002
+2021-05-13 09:58:38,247 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-1, [port]: 8000
+2021-05-13 09:58:38,253 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-2, [port]: 8001
+2021-05-13 09:58:38,258 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-3, [port]: 8002
+2021-05-13 09:59:12,017 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-1, [port]: 8000
+2021-05-13 09:59:12,021 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-2, [port]: 8001
+2021-05-13 09:59:12,025 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-3, [port]: 8002
+2021-05-13 10:03:17,294 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-1, [port]: 8000
+2021-05-13 10:03:17,298 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-2, [port]: 8001
+2021-05-13 10:03:17,300 - tcpserver - INFO: Start tcpserver, [name]: TCP Server-3, [port]: 8002

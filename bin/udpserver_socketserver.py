@@ -1,4 +1,5 @@
 # coding=utf-8
+from datetime import datetime
 import logging.config
 from socketserver import BaseRequestHandler, ThreadingUDPServer
 from multiprocessing import Queue as msg_queue, Process
@@ -14,13 +15,14 @@ class udp_packet_item:
     Tcp packet item
     """
 
-    def __init__(self) -> None:
+    def __init__(self, server_port: int, recv_time: datetime, recv_address: str, recv_msg: str):
         """
         Structure initialization
         """
-        self.server_port = 8000
-        self.recv_address = ""
-        self.recv_msg = b""
+        self.server_port = server_port
+        self.recv_time = recv_time
+        self.recv_address = recv_address
+        self.recv_msg = recv_msg
 
     def to_dict(self):
         """
@@ -28,7 +30,8 @@ class udp_packet_item:
         :return: tcp packet item dict
         """
         return {
-            "server_port": self.server_port,
+            "server_port": str(self.server_port),
+            "recv_time": self.recv_time,
             "recv_address": self.recv_address,
             "recv_msg": self.recv_msg
         }
@@ -61,13 +64,11 @@ class service_udpserver(BaseRequestHandler):
 
         # Packet msg
         logger.debug("UDP receive data [%s] from %s" % (udp_msg, ip_port))
-        recv_pkt = udp_packet_item()
-        recv_pkt.server_port = self.port
-        recv_pkt.recv_address = ip_port
-        recv_pkt.recv_msg = udp_msg
+        recv_pkt = udp_packet_item(server_port=self.port, recv_time=datetime.now()
+            , recv_address=ip_port, recv_msg=udp_msg)
         # Add msg to the queue
         if self.recv_queue is not None:
-            self.recv_queue.put(recv_pkt)
+            self.recv_queue.put(recv_pkt.to_dict())
 
 
 # serv = ThreadingUDPServer(('', 8000), service_udpserver)

@@ -1,3 +1,4 @@
+from datetime import datetime
 import logging.config
 import time
 
@@ -7,9 +8,32 @@ logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('mqttclient')
 
 
-def on_message(client, userdata, msg):
-    print(msg.topic + " " + msg.payload.decode("utf-8"))
-    logger.debug("MQTT receive message [\"%s\"] from %s %s" % (msg, client, userdata))
+class mqtt_packet_item:
+    """
+    mqtt packet item
+    """
+    def __init__(self, sub_topic: str, recv_time: datetime, recv_msg: str) -> None:
+        """
+        Structure initialization
+        """
+        self.sub_topic = sub_topic
+        self.recv_time = recv_time
+        self.recv_msg = recv_msg
+
+    def to_dict(self):
+        """
+        Convert structure to dictionary
+        :return: mqtt packet item dict
+        """
+        return {
+            "sub_topic": self.sub_topic,
+            "recv_time": self.recv_time,
+            "recv_msg": self.recv_msg
+        }
+
+
+
+
 
 
 class service_mqttclient:
@@ -27,7 +51,7 @@ class service_mqttclient:
         # Set user info
         self.mqttclient.username_pw_set(self.username, self.password)
         self.mqttclient.on_connect = self.on_connect
-        self.mqttclient.on_message = on_message
+        self.mqttclient.on_message = self.on_message
 
     def connect(self, sub_topic_list: list, timeout=60):
         self.sub_topic_list = sub_topic_list
@@ -47,6 +71,10 @@ class service_mqttclient:
             logger.info("MQTT topic subscribed successfully, [topic]: %s" % topic)
 
         client.publish("test1", "你好 MQTT", qos=0, retain=False)  # 发布消息
+    
+    def on_message(self, client, userdata, msg):
+        print(msg.topic + " " + msg.payload.decode("utf-8"))
+        logger.debug("MQTT receive message [\"%s\"] from %s %s" % (msg, client, userdata))
 
 
 obj_mqtt = service_mqttclient(host="www.sworld.top", port=1883
