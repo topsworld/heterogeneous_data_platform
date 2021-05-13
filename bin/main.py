@@ -29,7 +29,8 @@ if __name__ == '__main__':
     tcp_msg_queue = msg_queue()
     udp_msg_queue = msg_queue()
     mqtt_msg_queue = msg_queue()
-
+    # TODO: (1)解决不能存储中文bug
+    # TODO: (2)各服务状态实时更新，初始化失败循环
     server_config_dict = {
         "database":{
             "status": 1,

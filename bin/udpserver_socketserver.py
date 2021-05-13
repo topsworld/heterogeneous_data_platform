@@ -71,10 +71,6 @@ class service_udpserver(BaseRequestHandler):
             self.recv_queue.put(recv_pkt.to_dict())
 
 
-# serv = ThreadingUDPServer(('', 8000), service_udpserver)
-# serv.serve_forever()
-
-
 class process_udpserver_single_port(Process):
     """
     UDP service process, Inherited from multiprocessing Process

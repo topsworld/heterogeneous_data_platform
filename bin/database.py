@@ -43,9 +43,9 @@ class custom_database_helper:
         if db_class == "mysql":
             self.con_db_str = "mysql+pymysql://{uid}:{pwd}@{host}"
         elif db_class == "sqlserver":
-            pass
-        elif db_class == "sqlite":
-            pass
+            self.con_db_str = "mssql+pyodbc://{uid}:{pwd}@{host}"
+        elif db_class == "postgresql":
+            self.con_db_str = "postgresql+pygresql://{uid}:{pwd}@{host}"
         self.db_name = db_name
 
         self.Base = Base
@@ -73,22 +73,19 @@ class custom_database_helper:
         self.Base.metadata.drop_all(self.engine)
 
 
-
-
-
 class raw_database_helper:
     def __init__(self, uid, pwd, host
     , tcp_port_list: list, udp_port_list: list, mqtt_sub_list: list
-    , raw_db_name="heterogeneous_raw_data_db"
-    , is_save=True, db_class="mysql"):
+    , raw_db_name="heterogeneous_raw_data_db", db_class="mysql"):
         # https://docs.sqlalchemy.org/en/14/dialects/index.html
+        # TODO: suport more db
         self.con_raw_db_str = ""
         if db_class == "mysql":
             self.con_raw_db_str = "mysql+pymysql://{uid}:{pwd}@{host}"
         elif db_class == "sqlserver":
-            pass
-        elif db_class == "sqlite":
-            pass
+            self.con_raw_db_str = "mssql+pyodbc://{uid}:{pwd}@{host}"
+        elif db_class == "postgresql":
+            self.con_raw_db_str = "postgresql+pygresql://{uid}:{pwd}@{host}"
         
         self.db_name = raw_db_name
         
