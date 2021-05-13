@@ -1,5 +1,6 @@
 import logging
 import logging.config
+import time
 
 logging.config.fileConfig('logging.conf')
 
@@ -8,8 +9,6 @@ from tcpserver_socketserver import process_tcpserver
 from udpserver_socketserver import process_udpserver
 from mqttclient_pahomqtt import process_mqttclient
 from database import process_database
-# import database
-# import mqttclient
 # import rpc
 # import websocket
 
@@ -34,6 +33,12 @@ if __name__ == '__main__':
     server_config_dict = {
         "database":{
             "status": 1,
+            "host":"192.168.31.86",
+            "port":3306,
+            "username":"test",
+            "password":"0031",
+            "custom_db_name":"heterogeneous_data_db12",
+            "raw_db_name":"heterogeneous_rawdata_db12",
             "raw_db_obj":None,
             "custom_db_obj": None
         },
@@ -82,11 +87,16 @@ if __name__ == '__main__':
         },
         "mqtt":{
             "queue":mqtt_msg_queue,
+            "host": "broker.hivemq.com",
+            "port": 1883,
+            "username": "",
+            "password": "",
+            "name": "mqtt_client",
             "sub":{
                 "mqtt/sworld/test1":{
                     "status":1,
                     "is_save_raw_data": True,
-                    "name": "name",
+                    
                     "custom_handle":mqtt_custom_handle,
                     "table_info":{
                         "table_name":"",
@@ -103,18 +113,17 @@ if __name__ == '__main__':
     obj_process_tcpserver = process_tcpserver(tcp_server_info_dict= server_config_dict["tcp"])
     obj_process_tcpserver.start()
 
-    # obj_process_udpserver = process_udpserver(port=8000, recv_queue=udp_msg_queue, name="UDP Server-1")
-    # obj_process_udpserver.start()
-    # obj_process_udpserver2 = process_udpserver(port=8001, recv_queue=udp_msg_queue, name="UDP Server-2")
-    # obj_process_udpserver2.start()
-    # obj_process_udpserver3 = process_udpserver(port=8002, recv_queue=udp_msg_queue, name="UDP Server-3")
-    # obj_process_udpserver3.start()
+    obj_process_udpserver = process_udpserver(udp_server_info_dict= server_config_dict["udp"])
+    obj_process_udpserver.start()
 
-    # obj_mqtt = process_mqttclient(host="broker.hivemq.com", port=1883
-    #                                 , sub_list=["mqtt/sworld/test1", "mqtt/sworld/test2"]
-    #                                 , name="MQTT Client-1", recv_queue=mqtt_msg_queue)
-    # obj_mqtt.start()
-
+    obj_process_mqttclient = process_mqttclient(mqtt_server_info_dict=server_config_dict["mqtt"])
+    obj_process_mqttclient.start()
+    
+    while True:
+        # print(server_config_dict["tcp"]["port"]["8000"]["table_info"]["table_name"])
+        # server_config_dict["tcp"]["port"]["8000"]["table_info"]["table_name"] = "1212"
+        # print(server_config_dict["tcp"]["port"]["8000"]["table_info"]["table_name"])
+        time.sleep(1)
     # The main process receives and prints messages
     # while True:
     #     msg = global_queue.get()

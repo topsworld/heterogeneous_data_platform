@@ -38,3 +38,33 @@
 2021-05-13 15:23:38,507 - mqttclient - INFO: MQTT broker connected successfully, [name]: MQTT Client-1, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513152337
 2021-05-13 15:23:38,510 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test1
 2021-05-13 15:23:38,511 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test2
+2021-05-13 16:05:42,863 - mqttclient - INFO: Start mqttclient, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513160541
+2021-05-13 16:05:43,189 - mqttclient - INFO: MQTT broker connected successfully, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513160541
+2021-05-13 16:05:43,189 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test1
+2021-05-13 16:30:55,468 - mqttclient - INFO: Start mqttclient, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513163054
+2021-05-13 16:30:55,793 - mqttclient - INFO: MQTT broker connected successfully, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513163054
+2021-05-13 16:30:55,794 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test1
+2021-05-13 16:31:39,432 - mqttclient - INFO: Start mqttclient, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513163139
+2021-05-13 16:31:39,777 - mqttclient - INFO: MQTT broker connected successfully, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513163139
+2021-05-13 16:31:39,777 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test1
+2021-05-13 16:48:29,096 - mqttclient - INFO: Start mqttclient, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513164827
+2021-05-13 16:48:29,417 - mqttclient - INFO: MQTT broker connected successfully, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513164827
+2021-05-13 16:48:29,418 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test1
+2021-05-13 16:52:33,224 - mqttclient - INFO: Start mqttclient, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165232
+2021-05-13 16:52:33,546 - mqttclient - INFO: MQTT broker connected successfully, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165232
+2021-05-13 16:52:33,547 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test1
+2021-05-13 16:54:09,271 - mqttclient - INFO: Start mqttclient, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165408
+2021-05-13 16:54:09,618 - mqttclient - INFO: MQTT broker connected successfully, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165408
+2021-05-13 16:54:09,618 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test1
+2021-05-13 16:55:24,977 - mqttclient - INFO: Start mqttclient, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165523
+2021-05-13 16:55:25,330 - mqttclient - INFO: MQTT broker connected successfully, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165523
+2021-05-13 16:55:25,331 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test1
+2021-05-13 16:56:40,706 - mqttclient - INFO: Start mqttclient, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165640
+2021-05-13 16:56:41,056 - mqttclient - INFO: MQTT broker connected successfully, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165640
+2021-05-13 16:56:41,056 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test1
+2021-05-13 16:58:21,683 - mqttclient - INFO: Start mqttclient, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165821
+2021-05-13 16:58:22,033 - mqttclient - INFO: MQTT broker connected successfully, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165821
+2021-05-13 16:58:22,033 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test1
+2021-05-13 16:59:04,027 - mqttclient - INFO: Start mqttclient, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165903
+2021-05-13 16:59:04,349 - mqttclient - INFO: MQTT broker connected successfully, [name]: mqtt_client, [mqtt host]: broker.hivemq.com:1883, [client id]: mqttclient-20210513165903
+2021-05-13 16:59:04,350 - mqttclient - INFO: MQTT topic subscribed successfully, [topic]: mqtt/sworld/test1

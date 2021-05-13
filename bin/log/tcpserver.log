@@ -83,3 +83,31 @@
 2021-05-13 15:36:55,580 - tcpserver - INFO: [tcp_server: 8000][127.0.0.1:38826] device disconnected ( timed out ), devices count: 0
 2021-05-13 15:37:01,303 - tcpserver - INFO: [tcp_server: 8001][127.0.0.1:45390]device connected, devices count: 1
 2021-05-13 15:37:07,169 - tcpserver - INFO: [tcp_server: 8001][127.0.0.1:45390] device disconnected ( timed out ), devices count: 0
+2021-05-13 15:46:17,838 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 15:46:17,840 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001
+2021-05-13 15:46:32,878 - tcpserver - INFO: [tcp_server: 8000][127.0.0.1:39304]device connected, devices count: 1
+2021-05-13 15:46:38,873 - tcpserver - INFO: [tcp_server: 8000][127.0.0.1:39304] device disconnected ( timed out ), devices count: 0
+2021-05-13 15:46:43,959 - tcpserver - INFO: [tcp_server: 8000][127.0.0.1:39312]device connected, devices count: 1
+2021-05-13 15:46:49,846 - tcpserver - INFO: [tcp_server: 8000][127.0.0.1:39312] device disconnected ( timed out ), devices count: 0
+2021-05-13 16:04:54,423 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 16:04:54,425 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001
+2021-05-13 16:05:41,125 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 16:05:41,127 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001
+2021-05-13 16:30:54,675 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 16:30:54,679 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001
+2021-05-13 16:31:39,068 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 16:31:39,071 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001
+2021-05-13 16:48:27,535 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 16:48:27,538 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001
+2021-05-13 16:52:32,789 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 16:52:32,792 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001
+2021-05-13 16:54:08,796 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 16:54:08,809 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001
+2021-05-13 16:55:23,315 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 16:55:23,317 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001
+2021-05-13 16:56:40,257 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 16:56:40,258 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001
+2021-05-13 16:58:21,224 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 16:58:21,225 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001
+2021-05-13 16:59:03,698 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8000, [port]: 8000
+2021-05-13 16:59:03,700 - tcpserver - INFO: Start tcpserver, [name]: tcp_server: 8001, [port]: 8001

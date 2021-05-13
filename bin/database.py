@@ -35,21 +35,10 @@ class Users(Base):
         self.name = name
         self.email = email
 
-class Users1(Base):
-    __tablename__ = "users1"
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String(64), unique=True)
-    email = Column(String(64))
-
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-
 
 class custom_database_helper:
     def __init__(self, uid, pwd, host
-    , db_name="heterogeneous_data_db", db_class="mysql") -> None:
+    , db_name: str, db_class="mysql"):
         self.con_db_str = ""
         if db_class == "mysql":
             self.con_db_str = "mysql+pymysql://{uid}:{pwd}@{host}"
@@ -90,6 +79,7 @@ class custom_database_helper:
 class raw_database_helper:
     def __init__(self, uid, pwd, host
     , tcp_port_list: list, udp_port_list: list, mqtt_sub_list: list
+    , raw_db_name="heterogeneous_raw_data_db"
     , is_save=True, db_class="mysql"):
         # https://docs.sqlalchemy.org/en/14/dialects/index.html
         self.con_raw_db_str = ""
@@ -100,7 +90,7 @@ class raw_database_helper:
         elif db_class == "sqlite":
             pass
         
-        self.db_name = "heterogeneous_raw_data_db"
+        self.db_name = raw_db_name
         
         if not database_exists(self.con_raw_db_str.format(
             uid=uid, pwd=pwd, host=host)+"/"+self.db_name):
@@ -343,13 +333,21 @@ class process_database(Process):
     def __init__(self, server_dict: dict()):
         super(process_database, self).__init__()
         self.server_dict = server_dict
+        self.host = server_dict["database"]["host"]
+        self.port = server_dict["database"]["port"]
+        self.username = server_dict["database"]["username"]
+        self.password = server_dict["database"]["password"]
+        self.raw_db_name = server_dict["database"]["raw_db_name"]
+        self.custom_db_name = server_dict["database"]["custom_db_name"]
 
         self.tcp_port_list = list(self.server_dict["tcp"]["port"].keys())
         self.udp_port_list = list(self.server_dict["udp"]["port"].keys())
         self.mqtt_sub_list = list(self.server_dict["mqtt"]["sub"].keys())
 
-        self.raw_db_helper = raw_database_helper("test", "0031", "192.168.31.86:3306",
-            self.tcp_port_list, self.udp_port_list, self.mqtt_sub_list)
+        self.raw_db_helper = raw_database_helper(uid=self.username,pwd=self.password
+        , host=f"{self.host}:{self.port}", tcp_port_list= self.tcp_port_list
+        , udp_port_list= self.udp_port_list, mqtt_sub_list= self.mqtt_sub_list,
+        raw_db_name=self.raw_db_name)
         self.server_dict["database"]["raw_db_obj"] = self.raw_db_helper
 
         # 获取原始数据表
@@ -363,7 +361,8 @@ class process_database(Process):
             self.server_dict["mqtt"]["sub"][mqtt_sub]["table_info"] = self.raw_db_helper.mqtt_table_dict[mqtt_sub]
 
 
-        self.custom_db_helper = custom_database_helper("test", "0031", "192.168.31.86:3306")
+        self.custom_db_helper = custom_database_helper(uid= self.username, pwd= self.password
+        , host=f"{self.host}:{self.port}", db_name=self.custom_db_name)
         self.server_dict["database"]["custom_db_obj"] = self.custom_db_helper
 
         # TCP handle thread
@@ -380,9 +379,6 @@ class process_database(Process):
         self.thread_mqtt = thread_mqtt_handle(server_mqtt_dict=self.server_dict["mqtt"]
         , save_raw_data=self.server_dict["database"]["raw_db_obj"].mqtt_add_data
         , db_helper=self.custom_db_helper)
-
-        
-
 
     def run(self):    
         # Start TCP, UDP, MQTT message processing thread.

@@ -87,16 +87,16 @@ class service_mqttclient:
 
 
 class process_mqttclient(Process):
-    def __init__(self, host: str, port: int, sub_list: list
-    , recv_queue: msg_queue, username="", password="", name="mqtt: no set"):
+    def __init__(self, mqtt_server_info_dict: dict()):
         super(process_mqttclient, self).__init__()
-        self.host = host
-        self.port = port
-        self.username = username
-        self.password = password
-        self.sub_list = sub_list
-        self.recv_queue = recv_queue
-        self.name = name
+        self.mqtt_server_info_dict = mqtt_server_info_dict
+        self.host = mqtt_server_info_dict["host"]
+        self.port = mqtt_server_info_dict["port"]
+        self.username = mqtt_server_info_dict["username"]
+        self.password = mqtt_server_info_dict["password"]
+        self.sub_list = list(mqtt_server_info_dict["sub"].keys())
+        self.recv_queue = mqtt_server_info_dict["queue"]
+        self.name = mqtt_server_info_dict["name"]
         self.obj_service_mqttclient = service_mqttclient(host=self.host, port=self.port
         , username=self.username, password=self.password, name=self.name
         , recv_queue=self.recv_queue)
@@ -113,7 +113,35 @@ class process_mqttclient(Process):
         logger.info("Terminate mqttclient, [name]:%s, [sub_list]:%s" % (self.name, self.sub_list))
 
 
+# # abandon
+# class process_mqttclient(Process):
+#     def __init__(self, host: str, port: int, sub_list: list
+#     , recv_queue: msg_queue, username="", password="", name="mqtt: no set"):
+#         super(process_mqttclient, self).__init__()
+#         self.host = host
+#         self.port = port
+#         self.username = username
+#         self.password = password
+#         self.sub_list = sub_list
+#         self.recv_queue = recv_queue
+#         self.name = name
+#         self.obj_service_mqttclient = service_mqttclient(host=self.host, port=self.port
+#         , username=self.username, password=self.password, name=self.name
+#         , recv_queue=self.recv_queue)
+
+#     def run(self):
+#         self.obj_service_mqttclient.connect(self.sub_list)
+
+#     def stop(self):
+#         """
+#         Terminate the process, stop the MQTT service
+#         :return:
+#         """
+#         self.terminate()
+#         logger.info("Terminate mqttclient, [name]:%s, [sub_list]:%s" % (self.name, self.sub_list))
+
+
 # obj_mqtt = process_mqttclient(host="broker.hivemq.com", port=1883
-# , sub_list=["mqtt/sworld/test1", "mqtt/sworld/test2"]
-# , name="MQTT Client-1", recv_queue=msg_queue())
+#                                 , sub_list=["mqtt/sworld/test1", "mqtt/sworld/test2"]
+#                                 , name="MQTT Client-1", recv_queue=mqtt_msg_queue)
 # obj_mqtt.start()

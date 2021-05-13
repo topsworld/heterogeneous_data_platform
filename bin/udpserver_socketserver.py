@@ -75,7 +75,7 @@ class service_udpserver(BaseRequestHandler):
 # serv.serve_forever()
 
 
-class process_udpserver(Process):
+class process_udpserver_single_port(Process):
     """
     UDP service process, Inherited from multiprocessing Process
     """
@@ -89,7 +89,7 @@ class process_udpserver(Process):
                 from multiprocessing import Queue
         :param name: TCP Service name, default: no set
         """
-        super(process_udpserver, self).__init__()
+        super(process_udpserver_single_port, self).__init__()
         self.port = port
         self.name = name
         self.recv_queue = recv_queue
@@ -113,6 +113,19 @@ class process_udpserver(Process):
         """
         self.terminate()
         logger.info("Terminate udpserver, [name]:%s, [port]:%s" % (self.name, self.port))
+
+
+class process_udpserver:
+    def __init__(self, udp_server_info_dict: dict()):
+        self.udp_server_info_dict = udp_server_info_dict
+        for port_str, info in self.udp_server_info_dict["port"].items():
+            info["instance"] = process_udpserver_single_port(
+                port=int(port_str), recv_queue=self.udp_server_info_dict["queue"]
+                , name=info["name"])
+
+    def start(self):
+        for port_str, info in self.udp_server_info_dict["port"].items():
+            info["instance"].start()
 
 
 """

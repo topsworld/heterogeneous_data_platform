@@ -162,15 +162,6 @@ class service_tcpserver(StreamRequestHandler):
                     % (self.name, ip_port, "User close", len(self.devices)))
 
 
-# obj_service_tcpserver = service_tcpserver
-# obj_service_tcpserver.init(obj_service_tcpserver, None, 8000, "no set")
-# service_tcpserver.start_listen(service_tcpserver)
-
-
-# serv = ThreadingTCPServer(('', 8000), service_tcpserver)
-# serv.serve_forever()
-
-
 class process_tcpserver_single_port(Process):
     """
     TCP service process, Inherited from multiprocessing Process
