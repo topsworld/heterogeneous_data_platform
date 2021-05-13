@@ -37,8 +37,8 @@ if __name__ == '__main__':
             "port":3306,
             "username":"test",
             "password":"0031",
-            "custom_db_name":"heterogeneous_data_db12",
-            "raw_db_name":"heterogeneous_rawdata_db12",
+            "custom_db_name":"heterogeneous_data_db",
+            "raw_db_name":"heterogeneous_rawdata_db",
             "raw_db_obj":None,
             "custom_db_obj": None
         },
