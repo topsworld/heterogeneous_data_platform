@@ -3,7 +3,7 @@
 from datetime import datetime
 from logging import log
 import logging.config
-logging.config.fileConfig('logging.conf')
+# logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('database')
 
 from multiprocessing.context import Process
@@ -16,25 +16,10 @@ from sqlalchemy import Column, String, Integer, Text, Boolean, DateTime, Foreign
 from sqlalchemy.orm import relationship, sessionmaker,mapper, with_expression
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy_utils import database_exists
-from sqlalchemy.ext.declarative import declarative_base
 
 from threading import Thread
-import time
 
-
-Base = declarative_base()
-
-class Users(Base):
-    __tablename__ = "users"
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String(64), unique=True)
-    email = Column(String(64))
-
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-
+CustomBase = declarative_base()
 
 class custom_database_helper:
     def __init__(self, uid, pwd, host
@@ -48,7 +33,7 @@ class custom_database_helper:
             self.con_db_str = "postgresql+pygresql://{uid}:{pwd}@{host}"
         self.db_name = db_name
 
-        self.Base = Base
+        self.Base = CustomBase
 
         if not database_exists(self.con_db_str.format(
             uid=uid, pwd=pwd, host=host)+"/"+self.db_name):
@@ -63,14 +48,26 @@ class custom_database_helper:
             uid=uid, pwd=pwd, host=host)+"/"+self.db_name+"?charset=utf8mb4"
             , pool_pre_ping=True)
 
+        self.DBsession=sessionmaker(bind=self.engine)
         self.Base.metadata.create_all(self.engine)
         logger.info("Custom database initialize successfully.")
 
-    def custom_handle_sample(self, msg):
-        pass
+    # def custom_handle_sample(self, msg):
+    #     pass
         
     def delete_all_table(self):
         self.Base.metadata.drop_all(self.engine)
+    
+    def execute_sql(self, sql_str):
+        results = []
+        with self.DBsession.begin() as session:
+            results = session.execute(sql_str).fetchall()
+        return results
+    
+    def add_data(self, obj_data):
+        with self.DBsession.begin() as session:
+            session.add(obj_data)
+        return True
 
 
 class raw_database_helper:

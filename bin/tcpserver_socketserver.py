@@ -5,7 +5,7 @@ from multiprocessing import Process
 from multiprocessing import Queue as msg_queue
 from socketserver import ThreadingTCPServer, StreamRequestHandler
 
-logging.config.fileConfig('logging.conf')
+# logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('tcpserver')
 
 """

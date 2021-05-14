@@ -1,18 +1,15 @@
 from datetime import datetime
 import logging.config
+logger = logging.getLogger('mqttclient')
+
 import time
 
 import paho.mqtt.client as mqtt
 from multiprocessing import Queue as msg_queue
 from multiprocessing import Process
 
-from sqlalchemy.sql.functions import user
-
-logging.config.fileConfig('logging.conf')
-logger = logging.getLogger('mqttclient')
 
 # https://docs.emqx.cn/broker/v4.3/development/resource.html
-
 class mqtt_packet_item:
     """
     mqtt packet item
