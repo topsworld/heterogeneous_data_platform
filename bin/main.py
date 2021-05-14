@@ -1,15 +1,25 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-from datetime import datetime
 import logging
 import logging.config
-import time
 import os
+import re
+
 log_path = (os.path.split(os.path.realpath(__file__))[0]+'/logging.conf')
-print(log_path)
-logging.config.fileConfig(log_path)
+file_raw = open(log_path,'r+')
+file_copy = open(log_path+".current",'w+')
+str1=r'system_log_path_ffff'
+str2= os.path.split(os.path.realpath(__file__))[0]
+for ss in file_raw.readlines():
+    tt=re.sub(str1,str2,ss)
+    file_copy.write(tt)
+file_raw.close()
+file_copy.close()
+logging.config.fileConfig(log_path+".current")
 logger = logging.getLogger('main')
 
+import time
+from datetime import datetime
 from sqlalchemy import Column, String, Integer, DateTime, Float
 
 from multiprocessing import Queue as msg_queue
