@@ -9,4 +9,5 @@ ExecStart=/usr/local/bin/program_name/program_main_name /usr/local/etc/program_n
 ExecStop=/bin/kill $MAINPID
 
 [Install]
+Alias=program_name.service
 WantedBy=multi-user.target

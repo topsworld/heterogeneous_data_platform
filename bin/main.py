@@ -1,9 +1,13 @@
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
 from datetime import datetime
 import logging
 import logging.config
 import time
-
-logging.config.fileConfig('logging.conf')
+import os
+log_path = (os.path.split(os.path.realpath(__file__))[0]+'/logging.conf')
+print(log_path)
+logging.config.fileConfig(log_path)
 logger = logging.getLogger('main')
 
 from sqlalchemy import Column, String, Integer, DateTime, Float

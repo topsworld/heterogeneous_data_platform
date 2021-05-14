@@ -4,22 +4,27 @@ Python program automatic installation script
 EOF
 program_description="Python-based heterogeneous data platform"
 program_main_name="main.py"
-program_apk_package="python3:python3 pip3:python3-pip can:python3-can"
-program_python_package="sqlalchemy:sqlalchemy paho.mqtt:paho-mqtt json:json logging:log threading:threading"
+program_apk_package="python3:python3 pip3:python3-pip"
+program_python_package="sqlalchemy:sqlalchemy paho.mqtt:paho-mqtt json:json logging:log pymysql:pymysql sqlalchemy_utils:sqlalchemy-utils threading:threading"
 # TODO: Function to display message
-function echo_blue(){
+
+function echo_blue()
+{
   echo -e "\033[34m$1\033[0m"
 }
 # green to echo 
-function echo_green(){
+function echo_green()
+{
   echo -e "\033[32m$1\033[0m"
 }
 # Error
-function echo_red(){
+function echo_red()
+{
   echo -e "\033[31m\033[01m$1\033[0m"
 }
 # warning
-function echo_yellow(){
+function echo_yellow()
+{
   echo -e "\033[33m\033[01m$1\033[0m"
 }
 # TODO: Function to determine whether the module exists
@@ -85,15 +90,12 @@ func_python_check_all()
 script_name=`basename $(dirname $(readlink -f $0))`
 config_name="${script_name}.config"
 service_name="${script_name}.service"
-log_name="${script_name}.log"
 folder_bin="/usr/local/bin/"
 folder_config="/usr/local/etc/${script_name}/"
 folder_service="/usr/lib/systemd/system/"
-folder_log="/home/swlog/"
 full_folder_bin="${folder_bin}${script_name}" 
 full_folder_config="${folder_config}${config_name}" 
 full_folder_service="${folder_service}${service_name}"
-full_folder_log="${folder_log}${log_name}"
 
 echo_green "Start installing the ${script_name} service."
 echo "$(date "+%Y-%m-%d %H:%M:%S"): Detect script integrity."
@@ -174,18 +176,18 @@ echo "sudo sed -e \"s/program_name/${script_name}/g\" \"$(dirname $(readlink -f 
 sudo sed -i "s/program_main_name/${program_main_name}/g" "${full_folder_service}"
 sudo sed -i "s/program_description/${program_description}/g" "${full_folder_service}"
 sudo chmod -R 777 "${full_folder_service}"
-# TODO: Create script log file
-echo "$(date "+%Y-%m-%d %H:%M:%S"): Create the script log folder: ${log_name}."
-if [ ! -d "${folder_log}" ]
-then
-  sudo mkdir "${folder_log}"
-  sudo chmod -R 777 "${folder_log}"
-fi
-if [ -f "${full_folder_log}" ]
-then
-  sudo rm "${full_folder_log}"
-  echo_green "$(date "+%Y-%m-%d %H:%M:%S"): Remove file: ${log_name}, and create new file."
-fi
+# # TODO: Create script log file
+# echo "$(date "+%Y-%m-%d %H:%M:%S"): Create the script log folder: ${log_name}."
+# if [ ! -d "${folder_log}" ]
+# then
+#   sudo mkdir "${folder_log}"
+#   sudo chmod -R 777 "${folder_log}"
+# fi
+# if [ -f "${full_folder_log}" ]
+# then
+#   sudo rm "${full_folder_log}"
+#   echo_green "$(date "+%Y-%m-%d %H:%M:%S"): Remove file: ${log_name}, and create new file."
+# fi
 
 echo "$(date "+%Y-%m-%d %H:%M:%S"): Starting service: ${service_name}."
 sudo systemctl daemon-reload
